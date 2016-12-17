@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Franchise Map
+ * Plugin Name: Franchise Map Development
  * Plugin URI: https://github.com/agusnurwanto
  * Description: Show franchise locations to potential customers.
  * Version: 2.6.4
@@ -595,7 +595,7 @@ function set_franchise_finder(){
 							modal.find('.modal-body').html(data.table);
 							modal.modal('show');
 							jQuery('#table-zip-code').DataTable({"dom": 't'});
-							jQuery('#table-locations').DataTable();
+							jQuery('#table-locations').DataTable({"order": [[ 1, "asc" ]]});
 						}else{
 							alert(data.error);
 						}
@@ -620,7 +620,7 @@ function search_franchise(){
 		$key = $_POST['key'];
 		$file_location = get_option('location-franchise', true);
 		$file_zip_code = get_option('zip_code-franchise', true);
-		$msg_error = "Zip code not defined!";
+		$msg_error = "Franchise not defined!";
 		$errors = false;
 		if(!empty($file_zip_code)){
 			$zip_code = unserialize(file_get_contents($file_zip_code));
